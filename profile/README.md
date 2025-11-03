@@ -1,76 +1,102 @@
 # Polyglot
 
-**Build fast. Deploy faster.**
+**Intelligent and reproducible project scaffolding.**
 
-Welcome to Polyglot – a collection of modern development tools designed to eliminate friction from your workflow. We're building the tools we wish we had: intelligent project scaffolding, batteries-included web stacks, and libraries that just work.
+Polyglot is a next-generation command-line tool that creates fully reproducible development environments. Stop fighting with "works on my machine" problems and start building with confidence.
 
 🌐 [polyglot.build](http://polyglot.build)
 
-## Our Projects
+## What is Polyglot?
 
-### 🚀 [Polyglot](https://github.com/polyglot-build/polyglot)
+Polyglot goes beyond simple project templates. It manages your entire development stack – from toolchain installation to service orchestration – using a declarative manifest that guarantees the same setup on every machine.
 
-Intelligent project scaffolding that goes beyond simple file copying. Polyglot creates fully reproducible development environments with version-pinned tools, orchestrated services, and concurrent task execution.
+```bash
+polyglot new polyglot/rails-api \
+  --ruby_version="3.3.0" \
+  --database="postgresql" \
+  --postgres_version="16"
+```
 
-**Key Features:**
-- **Reproducible by default** – Every project works the same way on every machine
-- **Declarative setup** – Define your entire stack in a clean `pack.yaml` manifest
-- **Concurrent orchestration** – Tasks run in parallel with automatic dependency resolution
-- **Composable blueprints** – Mix and match reusable components across projects
-- **Service management** – Built-in Docker services with health checks
+**In seconds, you get:**
+- ✅ Version-pinned language runtimes and CLI tools (via `mise`)
+- ✅ Running Docker services with health checks
+- ✅ Rendered project templates
+- ✅ Concurrent task execution based on a dependency graph
+- ✅ A project that works identically for every developer
 
-Perfect for teams who want consistent, reliable project setup without the hassle.
+## Core Features
 
-### ⚡ [Greyhound](https://github.com/polyglot-build/greyhound)
+### 🎯 Reproducibility by Default
+Every tool, runtime, and dependency is precisely version-pinned. No more debugging environment differences across your team.
 
-An opinionated, batteries-included web stack that gets you from idea to deployed application in minutes. Greyhound combines Go's performance with modern frontend tooling to create a seamless full-stack experience.
+### 📋 Declarative Manifests
+Define your entire setup in a clean `pack.yaml` file. No fragile shell scripts, just a clear dependency graph of tasks.
 
-**Key Features:**
-- **Single binary deployment** – Compile everything into one executable
-- **Go + Inertia.js** – Server-driven SPAs without the API complexity
-- **Vite + Tailwind** – Modern frontend with instant hot reload
-- **SQLite or Postgres** – Choose your database based on your scale
-- **Built-in essentials** – Auth, jobs, migrations, and health checks included
-- **One-command deploy** – From code to production in seconds
+### ⚡ Concurrent Orchestration
+Polyglot builds a DAG from your tasks and runs them in parallel whenever possible, dramatically reducing setup time.
 
-Perfect for dashboards, internal tools, and any web application where shipping fast matters.
+### 🧩 Composable Blueprints
+Create reusable "mixins" (like PostgreSQL setup) and import them into any pack. Build a DRY ecosystem of components.
 
-## Supporting Libraries
+### 🐳 Smart Service Management
+Integrated Docker services with automatic health checks. Tasks that need a database only run after it's ready.
 
-### 📦 [Pack Registry](https://github.com/polyglot-build/pack-registry)
-A self-hosted service for discovering and serving versioned Polyglot packs. Integrates with GitHub to automatically index new pack versions.
+### 🎨 Powerful Templating
+Render not just file contents, but file names and directory structures too. Support for conditional logic and user parameters.
 
-### 🔗 [Inertia-Greyhound](https://github.com/polyglot-build/inertia-greyhound)
-A feature-rich Go adapter for Inertia.js with support for SSR, partial reloads, lazy loading, and more.
+## Key Repositories
 
-### 📁 [RenderFS](https://github.com/polyglot-build/renderfs)
-A flexible Go library for rendering project templates from any filesystem source using Pongo2.
+### [polyglot](https://github.com/polyglot-build/polyglot)
+The main CLI tool. This is what developers install and run to scaffold new projects.
+
+### [pack-registry](https://github.com/polyglot-build/pack-registry)
+A self-hosted service for discovering and serving versioned packs. Integrates with GitHub to automatically index new pack releases.
+
+### [renderfs](https://github.com/polyglot-build/renderfs)
+A flexible Go library for rendering project templates from any `fs.FS` source using Pongo2. Powers Polyglot's templating engine.
+
+## The Pack Ecosystem
+
+Packs are reusable blueprints for projects. The community can create and share packs for any language or framework:
+
+- `polyglot/rails-api` - Ruby on Rails API with PostgreSQL
+- `polyglot/nextjs-app` - Next.js with TypeScript and Tailwind
+- `polyglot/golang-cli` - Go CLI tool with Cobra
+- ...and many more to come!
+
+Each pack includes everything needed: parameters, services, setup tasks, and templates.
 
 ## Project Status
 
-Both **Polyglot** and **Greyhound** are under active development with beta releases planned before the end of 2025. We're working hard to deliver stable, production-ready tools that will transform how you build and deploy applications.
+Polyglot is under active development with a **beta release planned before the end of 2024**. We're building a tool that will transform how teams bootstrap and maintain projects.
 
-Want to be notified when we launch? Star our repositories and watch for updates!
+Want to be notified when we launch? **⭐ Star the repo** and watch for updates!
 
 ## Philosophy
 
-We believe development tools should be:
-- **Simple to start** – Great defaults that work out of the box
-- **Powerful to master** – Deep features when you need them
-- **Reliable everywhere** – Reproducible environments, no surprises
-- **Fast to deploy** – From local development to production in seconds
+We believe project scaffolding should be:
+- **Reproducible** – Same result on every machine, every time
+- **Declarative** – Clear manifests over magic scripts
+- **Concurrent** – Fast setup through parallel execution
+- **Composable** – Reuse components across projects
+
+## Roadmap
+
+- **V1 (Current)**: Perfect the "Day 1" local development experience
+- **V2**: Add `polyglot provision` and `polyglot deploy` for infrastructure
+- **V3**: Launch Polyglot Cloud, a managed PaaS for zero-friction deployment
 
 ## Get Involved
 
-- ⭐ **Star our repos** to show your support and stay updated
+- ⭐ **Star our repos** to show support and stay updated
 - 🐛 **Report issues** to help us improve
-- 💡 **Share ideas** for features you'd like to see
+- 💡 **Suggest packs** you'd like to see in the ecosystem
 - 📖 **Read the docs** at [polyglot.build](http://polyglot.build)
 
 ## License
 
-All projects are open source. Check individual repositories for specific license information.
+All projects are open source under the MIT license.
 
 ---
 
-Built with ❤️ by developers who care about your experience.
+Built by developers who are tired of broken project setup.
