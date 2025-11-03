@@ -48,7 +48,7 @@ A flexible Go library for rendering project templates from any filesystem source
 
 ## Project Status
 
-Both **Polyglot** and **Greyhound** are under active development with beta releases planned before the end of 2024. We're working hard to deliver stable, production-ready tools that will transform how you build and deploy applications.
+Both **Polyglot** and **Greyhound** are under active development with beta releases planned before the end of 2025. We're working hard to deliver stable, production-ready tools that will transform how you build and deploy applications.
 
 Want to be notified when we launch? Star our repositories and watch for updates!
 
